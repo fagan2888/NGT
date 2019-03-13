@@ -21,7 +21,7 @@
 int
 main(int argc, char **argv)
 {
-  string	indexFile	= "щттп-index";	// Index.
+  string	indexFile	= "onng-index";	// Index.
   string	query		= "sift_query.tsv";	// Query file.
   int		size		= 10;		// The number of resultant objects.
   float		radius		= FLT_MAX;	// Radius of search range.
