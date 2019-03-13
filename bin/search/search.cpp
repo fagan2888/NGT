@@ -39,7 +39,7 @@ main(int argc, char **argv)
         std::cout << "file error\n";
         exit(1);
       }
-      gt_input.read((char *) (gt.data() + dim*i), dim * sizeof(int));
+      gt_input.read((char *) (gt + dim*i), dim * sizeof(int));
     }
   }
   float counter = 0.0;
