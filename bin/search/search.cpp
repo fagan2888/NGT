@@ -15,6 +15,7 @@
 //
 
 #include	"NGT/Index.h"
+#include <fstream>
 
 int
 main(int argc, char **argv)
@@ -25,6 +26,23 @@ main(int argc, char **argv)
   float		radius		= FLT_MAX;	// Radius of search range.
   float		epsilon		= 0.1;		// Epsilon to expand explored range.
 
+  const size_t nq = 10000;
+  uint32_t gt[nq];
+  {
+    std::cout << "Load groundtruths...\n";
+    std::ifstream gt_input("../rl_hnsw/notebooks/data/SIFT100K/test_gt.ivecs", std::ios::binary);
+    uint32_t dim = 0;
+    for (size_t i = 0; i < nq; i++){
+      gt_input.read((char *) &dim, sizeof(uint32_t));
+      if (dim != 1) {
+        std::cout << "file error\n";
+        exit(1);
+      }
+      gt_input.read((char *) (gt.data() + dim*i), dim * sizeof(int));
+    }
+  }
+  float counter = 0.0;
+  int i = 0;
   try {
     NGT::Index	index(indexFile);		// open the specified index.
     ifstream	is(query);			// open a query file.
@@ -36,15 +54,15 @@ main(int argc, char **argv)
     if (getline(is, line)) {    		// read  a query object from a query file.
       NGT::Object *query = 0;
       {
-	vector<string> tokens;
-	NGT::Common::tokenize(line, tokens, " \t");      // split a string into words by the separators.
-	// create a vector from the words.
-	vector<double> obj;
-	for (vector<string>::iterator ti = tokens.begin(); ti != tokens.end(); ++ti) {
-	  obj.push_back(NGT::Common::strtol(*ti));
-	}
-	// allocate query object.
-	query = index.allocateObject(obj);
+	    vector<string> tokens;
+	    NGT::Common::tokenize(line, tokens, " \t");      // split a string into words by the separators.
+	    // create a vector from the words.
+	    vector<double> obj;
+	    for (vector<string>::iterator ti = tokens.begin(); ti != tokens.end(); ++ti)
+	      obj.push_back(NGT::Common::strtol(*ti));
+
+	    // allocate query object.
+	    query = index.allocateObject(obj);
       }
       // set search prameters.
       NGT::SearchContainer sc(*query);		// search parametera container.
@@ -57,10 +75,12 @@ main(int argc, char **argv)
       index.search(sc);
 
       // output resultant objects.
-      cout << "Rank\tID\tDistance" << endl;
-      for (size_t i = 0; i < objects.size(); i++) {
-	cout << i + 1 << "\t" << objects[i].id << "\t" << objects[i].distance << endl;
-      }
+
+      counter += objects[0].id == gt[i++];
+//            cout << "Rank\tID\tDistance" << endl;
+//      for (size_t i = 0; i < objects.size(); i++) {
+//	cout << i + 1 << "\t" << objects[i].id << "\t" << objects[i].distance << endl;
+//      }
       // delete the query object.
       index.deleteObject(query);
     }
@@ -71,6 +91,7 @@ main(int argc, char **argv)
     cerr << "Error" << endl;
     return 1;
   }
+  std::cout << "Counter: " << counter << std::endl;
 
   return 0;
 }
