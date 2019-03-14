@@ -414,7 +414,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
 #endif
 
 	Distance distance = comparator(sc.object, *objectRepository.get(neighbor.id));
-	sc.distanceComputationCount++;
+    //sc.distanceComputationCount++;
 	if (distance <= explorationRadius) {
 	  result.set(neighbor.id, distance);
 	  unchecked.push(result);
