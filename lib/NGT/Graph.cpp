@@ -123,6 +123,7 @@ void
 NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, ResultSet &results, 
 			      UncheckedSet &unchecked, DistanceCheckedSet &distanceChecked)
 {
+    std::cout << "setupSeeds\n";
   ObjectRepository &objectRepository = getObjectRepository();
   NGT::ObjectSpace::Comparator &comparator = objectSpace->getComparator();
   size_t byteSizeOfObject = objectSpace->getByteSizeOfObject();
@@ -304,10 +305,12 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
   void
     NeighborhoodGraph::search(NGT::SearchContainer &sc, ObjectDistances &seeds)
   {
+
+      std::cout << "search0\n";
     if (sc.explorationCoefficient == 0.0) {
       sc.explorationCoefficient = NGT_EXPLORATION_COEFFICIENT;
     }
-
+      std::cout << "search1\n";
     // setup edgeSize
     size_t edgeSize = getEdgeSize(sc);
 
@@ -323,7 +326,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
 #else 
     DistanceCheckedSet distanceChecked;
 #endif
-
+      std::cout << "search2\n";
     ResultSet results;
     setupSeeds(sc, seeds, results, unchecked, distanceChecked);
     Distance explorationRadius = sc.explorationCoefficient * sc.radius;
@@ -331,11 +334,13 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
     ObjectRepository &objectRepository = getObjectRepository();
     const size_t byteSizeOfObject = objectSpace->getByteSizeOfObject();
     ObjectDistance result;
+      std::cout << "search3\n";
 #ifdef NGT_GRAPH_BETTER_FIRST_RESTORE
     NodeWithPosition target;
 #else
     ObjectDistance target;
 #endif
+      std::cout << "search4\n";
     ObjectDistance *neighborptr;
     ObjectDistance *neighborendptr;
     while (!unchecked.empty()) {

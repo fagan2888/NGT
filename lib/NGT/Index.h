@@ -1100,7 +1100,6 @@ namespace NGT {
       try {
 	if (readOnly) {
 #if defined(NGT_SHARED_MEMORY_ALLOCATOR) || !defined(NGT_GRAPH_READ_ONLY_GRAPH)
-		std::cout << "0\n";
 	  NeighborhoodGraph::search(so, seeds);
 #else
 	  (*searchUnupdatableGraph)(*this, so, seeds);
