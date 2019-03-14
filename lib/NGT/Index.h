@@ -1105,10 +1105,10 @@ namespace NGT {
 	  (*searchUnupdatableGraph)(*this, so, seeds);
 #endif
 	} else {
-//		std::cout << "1\n";
+		std::cout << so.distanceComputationCount;
 
 	  NeighborhoodGraph::search(so, seeds);
-//		std::cout << "2\n";
+		std::cout << so.distanceComputationCount;
 	}
 	sc.workingResult = std::move(so.workingResult);
 	sc.distanceComputationCount = so.distanceComputationCount;
@@ -1473,7 +1473,6 @@ namespace NGT {
     // GraphAndTreeIndex
     void search(NGT::SearchContainer &sc) {
       sc.distanceComputationCount = 0;
-      std::cout << "HUI\n";
       ObjectDistances	seeds;
       getSeedsFromTree(sc, seeds);
       GraphIndex::search(sc, seeds);
