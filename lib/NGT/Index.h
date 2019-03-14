@@ -527,7 +527,6 @@ namespace NGT {
     }
 
     void linearSearch(NGT::SearchContainer &sc) {
-		std::cout << "next1";
       ObjectSpace::ResultSet results;
       objectSpace->linearSearch(sc.object, sc.radius, sc.size, results);
       ObjectDistances &qresults = sc.getResult();
@@ -1474,7 +1473,6 @@ namespace NGT {
 
     // GraphAndTreeIndex
     void search(NGT::SearchContainer &sc) {
-		std::cout << "next5";
       sc.distanceComputationCount = 0;
       ObjectDistances	seeds;
       getSeedsFromTree(sc, seeds);
