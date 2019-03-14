@@ -77,8 +77,7 @@ main(int argc, char **argv)
       index.search(sc);
 
       // output resultant objects.
-      std::cout << objects[0].id  << " " << gt[i] << std::endl;
-      counter += objects[0].id == gt[i];
+      counter += (objects[0].id-1) == gt[i];
       index.deleteObject(query);
     }
   } catch (NGT::Exception &err) {
@@ -88,7 +87,7 @@ main(int argc, char **argv)
     cerr << "Error" << endl;
     return 1;
   }
-  std::cout << "Counter: " << counter << std::endl;
+  std::cout << "Counter: " << counter / nq << std::endl;
 
   return 0;
 }
