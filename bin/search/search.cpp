@@ -17,13 +17,14 @@
 #include	"NGT/Index.h"
 #include <fstream>
 #include <iostream>
+#include <chrono>
 
 int
 main(int argc, char **argv)
 {
   string	indexFile	= "onng-index";	// Index.
   string	query		= "sift_query.tsv";	// Query file.
-  int		size		= 10;		// The number of resultant objects.
+  int		size		= 1;		// The number of resultant objects.
   float		radius		= FLT_MAX;	// Radius of search range.
   float		epsilon		= 0.1;		// Epsilon to expand explored range.
 
