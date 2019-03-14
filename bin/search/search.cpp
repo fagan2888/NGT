@@ -51,8 +51,9 @@ main(int argc, char **argv)
       cerr << "Cannot open the specified file. " << query << endl;
       return 1;
     }
+
     string line;
-    if (getline(is, line)) {    		// read  a query object from a query file.
+    while (getline(is, line)) {    		// read  a query object from a query file.
       NGT::Object *query = 0;
       {
 	    vector<string> tokens;
@@ -76,13 +77,8 @@ main(int argc, char **argv)
       index.search(sc);
 
       // output resultant objects.
-
+      std::cout << objects[0].id  << " " << gt[i++] << std::endl;
       counter += objects[0].id == gt[i++];
-//            cout << "Rank\tID\tDistance" << endl;
-//      for (size_t i = 0; i < objects.size(); i++) {
-//	cout << i + 1 << "\t" << objects[i].id << "\t" << objects[i].distance << endl;
-//      }
-      // delete the query object.
       index.deleteObject(query);
     }
   } catch (NGT::Exception &err) {
