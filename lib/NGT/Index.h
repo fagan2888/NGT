@@ -1081,8 +1081,6 @@ namespace NGT {
 
     // GraphIndex
     virtual void search(NGT::SearchContainer &sc, ObjectDistances &seeds) {
-
-      std::cout << "HUI\n";
       if (sc.size == 0) {
 	while (!sc.workingResult.empty()) sc.workingResult.pop();
 	return;
@@ -1102,11 +1100,13 @@ namespace NGT {
       try {
 	if (readOnly) {
 #if defined(NGT_SHARED_MEMORY_ALLOCATOR) || !defined(NGT_GRAPH_READ_ONLY_GRAPH)
+		std::cout << "0\n";
 	  NeighborhoodGraph::search(so, seeds);
 #else
 	  (*searchUnupdatableGraph)(*this, so, seeds);
 #endif
 	} else {
+		std::cout << "1\n";
 	  NeighborhoodGraph::search(so, seeds);
 	}
 	sc.workingResult = std::move(so.workingResult);
