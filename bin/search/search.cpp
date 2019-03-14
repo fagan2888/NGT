@@ -59,6 +59,7 @@ main(int argc, char **argv)
   }
   float counter = 0.0;
   float time = 0.0;
+  float dcs = 0.0;
   try {
     NGT::Index	index(indexFile);		// open the specified index.
     ifstream	is(query);			// open a query file.
@@ -93,6 +94,7 @@ main(int argc, char **argv)
       Timer query_time;
       index.search(sc);
       time += query_time.elapsed_seconds();
+      dcs += sc.distanceComputationCount;
 
       // output resultant objects.
       counter += (objects[0].id-1) == gt[i];
@@ -107,6 +109,7 @@ main(int argc, char **argv)
   }
   std::cout << "Counter: " << counter / nq << std::endl;
   std::cout << "Time: " << 1e6 * time / nq << std::endl;
+  std::cout << "dcs: " << dcs / nq << std::endl;
 
   return 0;
 }
