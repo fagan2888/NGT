@@ -311,8 +311,8 @@ namespace NGT {
     virtual void getProperty(NGT::Property &prop) { getIndex().getProperty(prop); }
     virtual void deleteObject(Object *po) { getIndex().deleteObject(po); }
     virtual void linearSearch(NGT::SearchContainer &sc) { getIndex().linearSearch(sc); }
-    virtual void search(NGT::SearchContainer &sc) {std::cout<<"1\n"; getIndex().search(sc); }
-    virtual void search(NGT::SearchContainer &sc, ObjectDistances &seeds) {std::cout<<"2\n"; getIndex().search(sc, seeds); }
+    virtual void search(NGT::SearchContainer &sc) {std::cout<<"1"; getIndex().search(sc); }
+    virtual void search(NGT::SearchContainer &sc, ObjectDistances &seeds) {getIndex().search(sc, seeds); }
     virtual void remove(ObjectID id) { getIndex().remove(id); }
     virtual void exportIndex(const string &file) { getIndex().exportIndex(file); }
     virtual void importIndex(const string &file) { getIndex().importIndex(file); }
@@ -1082,6 +1082,8 @@ namespace NGT {
 
     // GraphIndex
     virtual void search(NGT::SearchContainer &sc, ObjectDistances &seeds) {
+
+      std::cout << "2\n"
       if (sc.size == 0) {
 	while (!sc.workingResult.empty()) sc.workingResult.pop();
 	return;
