@@ -328,7 +328,8 @@ namespace NGT {
       size_t isize = getIndex().getSharedMemorySize(os, t); 
       return osize + isize;
     }
-    void searchUsingOnlyGraph(NGT::SearchContainer &sc) { 
+    void searchUsingOnlyGraph(NGT::SearchContainer &sc) {
+		std::cout << "next0";
       sc.distanceComputationCount = 0;
       ObjectDistances seeds;
 		std::cout<<"3\n";
@@ -528,6 +529,7 @@ namespace NGT {
     }
 
     void linearSearch(NGT::SearchContainer &sc) {
+		std::cout << "next1";
       ObjectSpace::ResultSet results;
       objectSpace->linearSearch(sc.object, sc.radius, sc.size, results);
       ObjectDistances &qresults = sc.getResult();
@@ -536,7 +538,7 @@ namespace NGT {
 
     // GraphIndex
     virtual void search(NGT::SearchContainer &sc) {
-    	std::cout << "3";
+		std::cout << "next2";
       sc.distanceComputationCount = 0;
       ObjectDistances seeds;
       search(sc, seeds);
@@ -578,6 +580,7 @@ namespace NGT {
     }
 
     virtual void searchForNNGInsertion(Object &po, ObjectDistances &result) {
+		std::cout << "next3";
       NGT::SearchContainer sc(po);
       sc.setResults(&result);
       sc.size = NeighborhoodGraph::property.edgeSizeForCreation;
@@ -602,6 +605,7 @@ namespace NGT {
     }
 
     void searchForKNNGInsertion(Object &po, ObjectID id, ObjectDistances &result) {
+		std::cout << "next4";
       double radius = FLT_MAX;
       size_t size = NeighborhoodGraph::property.edgeSizeForCreation;
       if (id > 0) {
@@ -1476,6 +1480,7 @@ namespace NGT {
 
     // GraphAndTreeIndex
     void search(NGT::SearchContainer &sc) {
+		std::cout << "next5";
       sc.distanceComputationCount = 0;
       ObjectDistances	seeds;
       getSeedsFromTree(sc, seeds);
