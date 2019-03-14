@@ -1105,8 +1105,9 @@ namespace NGT {
 	  (*searchUnupdatableGraph)(*this, so, seeds);
 #endif
 	} else {
-		std::cout << "1\n";
+//		std::cout << "1\n";
 	  NeighborhoodGraph::search(so, seeds);
+//		std::cout << "2\n";
 	}
 	sc.workingResult = std::move(so.workingResult);
 	sc.distanceComputationCount = so.distanceComputationCount;
