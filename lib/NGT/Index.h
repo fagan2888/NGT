@@ -1111,8 +1111,7 @@ namespace NGT {
 #endif
 	} else {
 //		std::cout << so.distanceComputationCount;
-	  //NeighborhoodGraph::search(so, seeds);
-		search(so, seeds);
+	  NeighborhoodGraph::search(so, seeds);
 //		std::cout << so.distanceComputationCount;
 	}
 	sc.workingResult = std::move(so.workingResult);
