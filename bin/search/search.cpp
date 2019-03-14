@@ -53,7 +53,7 @@ main(int argc, char **argv)
 
     string line;
     for (size_t i = 0; i < nq; i++){
-      std::cout << getline(is, line) << std::endl;   		// read  a query object from a query file.
+      getline(is, line);   		// read  a query object from a query file.
       NGT::Object *query = 0;
       {
 	    vector<string> tokens;
