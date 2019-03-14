@@ -536,6 +536,7 @@ namespace NGT {
 
     // GraphIndex
     virtual void search(NGT::SearchContainer &sc) {
+    	std::cout << "3";
       sc.distanceComputationCount = 0;
       ObjectDistances seeds;
       search(sc, seeds);
@@ -1083,7 +1084,7 @@ namespace NGT {
     // GraphIndex
     virtual void search(NGT::SearchContainer &sc, ObjectDistances &seeds) {
 
-      std::cout << "2\n"
+      std::cout << "2\n";
       if (sc.size == 0) {
 	while (!sc.workingResult.empty()) sc.workingResult.pop();
 	return;
