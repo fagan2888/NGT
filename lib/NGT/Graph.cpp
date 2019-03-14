@@ -307,6 +307,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
     if (sc.explorationCoefficient == 0.0) {
       sc.explorationCoefficient = NGT_EXPLORATION_COEFFICIENT;
     }
+    std::cout << "HUI\n";
 
     // setup edgeSize
     size_t edgeSize = getEdgeSize(sc);
@@ -414,7 +415,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
 #endif
 
 	Distance distance = comparator(sc.object, *objectRepository.get(neighbor.id));
-    //sc.distanceComputationCount++;
+    sc.distanceComputationCount++;
 	if (distance <= explorationRadius) {
 	  result.set(neighbor.id, distance);
 	  unchecked.push(result);
