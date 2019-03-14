@@ -66,55 +66,56 @@ NeighborhoodGraph::Property::get(NGT::Property &prop) {
 #ifdef NGT_GRAPH_READ_ONLY_GRAPH
 void 
 NeighborhoodGraph::Search::normalizedCosineSimilarityFloat(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
-{
+{exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::NormalizedCosineSimilarityFloat>(sc, seeds);
 }
 
 void 
 NeighborhoodGraph::Search::cosineSimilarityFloat(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
-{
+{exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::CosineSimilarityFloat>(sc, seeds);
 }
 
 void 
 NeighborhoodGraph::Search::normalizedAngleFloat(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
-{
+{exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::NormalizedAngleFloat>(sc, seeds);
 }
 
 void 
 NeighborhoodGraph::Search::angleFloat(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
-{
+{exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::AngleFloat>(sc, seeds);
 }
 
 void 
 NeighborhoodGraph::Search::l1Float(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
-{
+{exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::L1Float>(sc, seeds);
 }
 
 void 
 NeighborhoodGraph::Search::l2Float(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
-{
+{exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::L2Float>(sc, seeds);
 }
 
 void 
 NeighborhoodGraph::Search::l1Uint8(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
-{
+{exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::L1Uint8>(sc, seeds);
 }
 
 void 
 NeighborhoodGraph::Search::l2Uint8(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
-{
+{exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::L2Uint8>(sc, seeds);
 }
 
 void 
 NeighborhoodGraph::Search::hammingUint8(NeighborhoodGraph &graph, NGT::SearchContainer &sc, ObjectDistances &seeds)
 {
+exit(0);
   graph.searchReadOnlyGraph<PrimitiveComparator::HammingUint8>(sc, seeds);
 }
 #endif
@@ -305,7 +306,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
     NeighborhoodGraph::search(NGT::SearchContainer &sc, ObjectDistances &seeds)
   {
 
-      std::cout << "search0\n";
+      exit(0);
     if (sc.explorationCoefficient == 0.0) {
       sc.explorationCoefficient = NGT_EXPLORATION_COEFFICIENT;
     }
