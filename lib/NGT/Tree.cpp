@@ -405,7 +405,7 @@ DVPTree::search(SearchContainer &sc, InternalNode &node, UncheckedNode &unchecke
   Distance d = objectSpace->getComparator()(sc.object, node.getPivot());
 #endif
 #ifdef NGT_DISTANCE_COMPUTATION_COUNT
-//  sc.distanceComputationCount++;
+  sc.distanceComputationCount++;
 #endif
 
   int bsize = internalChildrenSize - 1;
@@ -492,7 +492,7 @@ DVPTree::search(SearchContainer &so, LeafNode &node, UncheckedNode &uncheckedNod
   Distance pq = objectSpace->getComparator()(q.object, node.getPivot());
 #endif
 #ifdef NGT_DISTANCE_COMPUTATION_COUNT
-//  so.distanceComputationCount++;
+  so.distanceComputationCount++;
 #endif
 
   ObjectDistance r;

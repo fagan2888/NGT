@@ -178,7 +178,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
 #endif
 
 #ifdef NGT_DISTANCE_COMPUTATION_COUNT
-  sc.distanceComputationCount += seeds.size();
+//  sc.distanceComputationCount += seeds.size();
 #endif
 
   std::sort(tmp.begin(), tmp.end());
@@ -268,7 +268,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
         distanceChecked.insert(neighbor.first);
 
 #ifdef NGT_DISTANCE_COMPUTATION_COUNT
-	sc.distanceComputationCount++;
+//	sc.distanceComputationCount++;
 #endif
 
 	Distance distance = COMPARATOR::compare((void*)&sc.object[0], 
@@ -418,7 +418,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
 #endif
 
 	Distance distance = comparator(sc.object, *objectRepository.get(neighbor.id));
-    sc.distanceComputationCount++;
+//    sc.distanceComputationCount++;
 	if (distance <= explorationRadius) {
 	  result.set(neighbor.id, distance);
 	  unchecked.push(result);
