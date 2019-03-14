@@ -1106,6 +1106,7 @@ namespace NGT {
 #endif
 	} else {
 //		std::cout << "1\n";
+
 	  NeighborhoodGraph::search(so, seeds);
 //		std::cout << "2\n";
 	}

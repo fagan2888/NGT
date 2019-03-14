@@ -123,7 +123,6 @@ void
 NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, ResultSet &results, 
 			      UncheckedSet &unchecked, DistanceCheckedSet &distanceChecked)
 {
-    std::cout << "setupSeeds\n";
   ObjectRepository &objectRepository = getObjectRepository();
   NGT::ObjectSpace::Comparator &comparator = objectSpace->getComparator();
   size_t byteSizeOfObject = objectSpace->getByteSizeOfObject();
@@ -334,7 +333,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
     ObjectRepository &objectRepository = getObjectRepository();
     const size_t byteSizeOfObject = objectSpace->getByteSizeOfObject();
     ObjectDistance result;
-      std::cout << "search3\n";
+      std::cout << "search3" << std::endl;
 #ifdef NGT_GRAPH_BETTER_FIRST_RESTORE
     NodeWithPosition target;
 #else
