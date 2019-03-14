@@ -19,6 +19,20 @@
 #include <iostream>
 #include <chrono>
 
+class Timer {
+public:
+    Timer() { start_time = chrono::high_resolution_clock::now(); }
+
+    double elapsed_seconds() {
+      auto end_time = chrono::high_resolution_clock::now();
+      auto elapsed = chrono::duration_cast<chrono::duration<double>>(end_time - start_time);
+      return elapsed.count();
+    }
+
+private:
+    chrono::high_resolution_clock::time_point start_time;
+};
+
 int
 main(int argc, char **argv)
 {
@@ -44,6 +58,7 @@ main(int argc, char **argv)
     }
   }
   float counter = 0.0;
+  float time = 0.0;
   try {
     NGT::Index	index(indexFile);		// open the specified index.
     ifstream	is(query);			// open a query file.
@@ -75,7 +90,9 @@ main(int argc, char **argv)
       sc.setRadius(radius);			// search radius.
       sc.setEpsilon(epsilon);			// set exploration coefficient.
 
+      Timer query_time;
       index.search(sc);
+      time += query_time.elapsed_seconds();
 
       // output resultant objects.
       counter += (objects[0].id-1) == gt[i];
@@ -89,6 +106,7 @@ main(int argc, char **argv)
     return 1;
   }
   std::cout << "Counter: " << counter / nq << std::endl;
+  std::cout << "Time: " << 1e6 * time / nq << std::endl;
 
   return 0;
 }
