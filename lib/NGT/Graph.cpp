@@ -438,7 +438,7 @@ NeighborhoodGraph::setupSeeds(NGT::SearchContainer &sc, ObjectDistances &seeds, 
 	}
 	    if (sc.distanceComputationCount >= 512) break;
       }
-      if (sc.distanceComputationCount >= 512) break;
+//      if (sc.distanceComputationCount >= 512) break;
     } 
     if (sc.resultIsAvailable()) { 
       ObjectDistances &qresults = sc.getResult();
