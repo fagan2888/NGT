@@ -1081,6 +1081,8 @@ namespace NGT {
 
     // GraphIndex
     virtual void search(NGT::SearchContainer &sc, ObjectDistances &seeds) {
+
+      std::cout << "HUI\n";
       if (sc.size == 0) {
 	while (!sc.workingResult.empty()) sc.workingResult.pop();
 	return;
