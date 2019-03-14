@@ -1473,6 +1473,7 @@ namespace NGT {
     // GraphAndTreeIndex
     void search(NGT::SearchContainer &sc) {
       sc.distanceComputationCount = 0;
+      std::cout << "HUI\n";
       ObjectDistances	seeds;
       getSeedsFromTree(sc, seeds);
       GraphIndex::search(sc, seeds);
