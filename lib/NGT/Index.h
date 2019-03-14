@@ -329,10 +329,8 @@ namespace NGT {
       return osize + isize;
     }
     void searchUsingOnlyGraph(NGT::SearchContainer &sc) {
-		std::cout << "next0";
       sc.distanceComputationCount = 0;
       ObjectDistances seeds;
-		std::cout<<"3\n";
       getIndex().search(sc, seeds); 
     }
     Index &getIndex() {
@@ -538,7 +536,6 @@ namespace NGT {
 
     // GraphIndex
     virtual void search(NGT::SearchContainer &sc) {
-		std::cout << "next2";
       sc.distanceComputationCount = 0;
       ObjectDistances seeds;
       search(sc, seeds);
@@ -1114,8 +1111,8 @@ namespace NGT {
 #endif
 	} else {
 //		std::cout << so.distanceComputationCount;
-
-	  NeighborhoodGraph::search(so, seeds);
+	  //NeighborhoodGraph::search(so, seeds);
+		search(so, seeds);
 //		std::cout << so.distanceComputationCount;
 	}
 	sc.workingResult = std::move(so.workingResult);
