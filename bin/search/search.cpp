@@ -43,7 +43,6 @@ main(int argc, char **argv)
     }
   }
   float counter = 0.0;
-  int i = 0;
   try {
     NGT::Index	index(indexFile);		// open the specified index.
     ifstream	is(query);			// open a query file.
@@ -53,7 +52,8 @@ main(int argc, char **argv)
     }
 
     string line;
-    while (getline(is, line)) {    		// read  a query object from a query file.
+    for (size_t i = 0; i < nq; i++){
+      std::cout << getline(is, line) << std::endl;   		// read  a query object from a query file.
       NGT::Object *query = 0;
       {
 	    vector<string> tokens;
@@ -77,8 +77,8 @@ main(int argc, char **argv)
       index.search(sc);
 
       // output resultant objects.
-      std::cout << objects[0].id  << " " << gt[i++] << std::endl;
-      counter += objects[0].id == gt[i++];
+      std::cout << objects[0].id  << " " << gt[i] << std::endl;
+      counter += objects[0].id == gt[i];
       index.deleteObject(query);
     }
   } catch (NGT::Exception &err) {
